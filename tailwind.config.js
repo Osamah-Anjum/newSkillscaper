@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Syne', 'system-ui', 'sans-serif'],
+        display: ['Bebas Neue', 'sans-serif'],
       },
       colors: {
         ink: '#0D0800',
@@ -19,11 +19,7 @@ export default {
         'accent-dim': '#CC8300',
         'accent-glow': 'rgba(255,164,0,0.2)',
       },
-      backgroundImage: {
-        'gradient-dark': 'linear-gradient(135deg, #0D0800 0%, #1A0F00 50%, #0D0800 100%)',
-        'gradient-orange': 'linear-gradient(135deg, #FFA400 0%, #FF6B00 100%)',
-        'gradient-section': 'linear-gradient(180deg, #0D0800 0%, #1A0F00 100%)',
-      },
+      backgroundImage: {},
       animation: {
         'fade-up': 'fadeUp 0.7s ease forwards',
         'fade-in': 'fadeIn 0.6s ease forwards',

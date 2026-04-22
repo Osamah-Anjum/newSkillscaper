@@ -14,14 +14,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close menu on resize to md+
   useEffect(() => {
     const onResize = () => { if (window.innerWidth >= 768) setMenuOpen(false) }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
@@ -34,47 +32,37 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? 'backdrop-blur-md border-b border-orange-900/30' : ''
+          scrolled ? 'border-b border-accent/10' : ''
         }`}
-        style={scrolled ? { background: 'rgba(13,8,0,0.92)' } : {}}
+        style={scrolled ? { background: 'rgba(13,8,0,0.95)', backdropFilter: 'blur(12px)' } : {}}
       >
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-10 h-16 flex items-center justify-between">
+        <div className="px-5 sm:px-8 lg:px-20 xl:px-28 h-16 flex items-center justify-between">
 
-          {/* Logo + Brand */}
           <div className="flex items-center gap-2 shrink-0">
             <img src={logo} alt="Skillscaper logo" className="w-7 h-7 object-contain" />
-            <span className="font-display font-bold text-lg sm:text-xl tracking-tight">
-              <span className="text-pearl">SKILL</span>
-              <span className="text-gradient-orange">SCAPER</span>
+            <span className="font-display font-bold text-lg sm:text-xl tracking-tight text-pearl">
+              SKILLSCAPER
             </span>
           </div>
 
-          {/* Desktop nav links */}
           <ul className="hidden md:flex items-center gap-6 lg:gap-8">
             {links.map(l => (
               <li key={l}>
-                <a href="#" className="text-sm text-pearl/50 hover:text-accent transition-colors duration-200 whitespace-nowrap">
-                  {l}
-                </a>
+                <a href="#" className="text-sm text-pearl/50 hover:text-accent transition-colors duration-200 whitespace-nowrap">{l}</a>
               </li>
             ))}
           </ul>
 
-          {/* Desktop CTAs */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
-            <a href="#" className="text-sm text-pearl/50 hover:text-accent transition-colors whitespace-nowrap">
-              Sign in
-            </a>
+            <a href="#" className="text-sm text-pearl/50 hover:text-accent transition-colors whitespace-nowrap">Sign in</a>
             <a
               href="#"
-              className="text-sm font-semibold px-5 py-2 rounded-full transition-all duration-200 glow-accent whitespace-nowrap"
-              style={{ background: 'linear-gradient(135deg, #FFA400 0%, #FF6B00 100%)', color: '#0D0800' }}
+              className="text-sm font-semibold px-5 py-2 rounded-full bg-accent hover:bg-accent-light text-ink transition-colors duration-200 whitespace-nowrap"
             >
               Request Demo
             </a>
           </div>
 
-          {/* Hamburger button — min 44x44 touch target */}
           <button
             className="md:hidden flex items-center justify-center w-11 h-11 -mr-2 text-pearl/70 hover:text-accent transition-colors"
             onClick={() => setMenuOpen(v => !v)}
@@ -91,28 +79,23 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile menu — rendered outside nav so it covers full screen correctly */}
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 md:hidden"
-              style={{ background: 'rgba(13,8,0,0.6)', backdropFilter: 'blur(4px)' }}
+              className="fixed inset-0 z-40 md:hidden bg-ink/60"
               onClick={() => setMenuOpen(false)}
             />
-
-            {/* Drawer */}
             <motion.div
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="fixed top-16 left-0 right-0 z-50 md:hidden border-t border-orange-900/30 px-5 pb-8"
+              className="fixed top-16 left-0 right-0 z-50 md:hidden border-t border-accent/10 px-5 pb-8"
               style={{ background: 'rgba(13,8,0,0.98)', backdropFilter: 'blur(16px)' }}
             >
               <ul className="flex flex-col pt-4">
@@ -120,8 +103,7 @@ export default function Navbar() {
                   <li key={l}>
                     <a
                       href="#"
-                      className="flex items-center py-3.5 text-base text-pearl/60 hover:text-accent transition-colors border-b"
-                      style={{ borderColor: 'rgba(255,164,0,0.06)' }}
+                      className="flex items-center py-3.5 text-base text-pearl/60 hover:text-accent transition-colors border-b border-accent/5"
                       onClick={() => setMenuOpen(false)}
                     >
                       {l}
@@ -129,19 +111,13 @@ export default function Navbar() {
                   </li>
                 ))}
               </ul>
-
               <div className="flex flex-col gap-3 mt-6">
-                <a
-                  href="#"
-                  className="text-center py-3 text-sm text-pearl/50 hover:text-accent transition-colors"
-                  onClick={() => setMenuOpen(false)}
-                >
+                <a href="#" className="text-center py-3 text-sm text-pearl/50 hover:text-accent transition-colors" onClick={() => setMenuOpen(false)}>
                   Sign in
                 </a>
                 <a
                   href="#"
-                  className="block text-center font-semibold text-sm px-4 py-3.5 rounded-full"
-                  style={{ background: 'linear-gradient(135deg, #FFA400 0%, #FF6B00 100%)', color: '#0D0800' }}
+                  className="block text-center font-semibold text-sm px-4 py-3.5 rounded-full bg-accent hover:bg-accent-light text-ink transition-colors duration-200"
                   onClick={() => setMenuOpen(false)}
                 >
                   Request Demo
