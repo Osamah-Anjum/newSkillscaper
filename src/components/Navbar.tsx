@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import logo from '../assets/SKSC-Favicon-512x512-Yellow.png'
+import logo from '../assets/Logo_Horizontal-Transparent-Yellow.png'
 
 const links = ['How It Works', 'Sectors', 'Methodology', 'Results']
 
@@ -28,9 +28,9 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
-        initial={{ y: -20, opacity: 0 }}
+        initial={{ y: -8, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled ? 'border-b border-accent/10' : ''
         }`}
@@ -38,11 +38,8 @@ export default function Navbar() {
       >
         <div className="px-5 sm:px-8 lg:px-20 xl:px-28 h-16 flex items-center justify-between">
 
-          <div className="flex items-center gap-2 shrink-0">
-            <img src={logo} alt="Skillscaper logo" className="w-7 h-7 object-contain" />
-            <span className="font-display font-bold text-lg sm:text-xl tracking-tight text-pearl">
-              SKILLSCAPER
-            </span>
+          <div className="flex items-center shrink-0">
+            <img src={logo} alt="Skillscaper" className="h-10 sm:h-12 w-auto object-contain" />
           </div>
 
           <ul className="hidden md:flex items-center gap-6 lg:gap-8">
