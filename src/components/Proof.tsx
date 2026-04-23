@@ -25,6 +25,18 @@ export default function Proof() {
 
         {/* Stats */}
         <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-10"
+        >
+          <h2 className="font-display font-bold text-pearl leading-tight">
+            WHY CHOOSE IMMERSIVE ASSESSMENTS
+          </h2>
+        </motion.div>
+
+        <motion.div
           ref={ref}
           className="grid grid-cols-2 lg:grid-cols-4 rounded-2xl overflow-hidden mb-24 border border-accent/10"
         >
