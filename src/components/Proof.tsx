@@ -3,9 +3,9 @@ import { useRef } from 'react'
 
 const stats = [
   { value: '20%', label: 'Increased Productivity' },
-  { value: '21%', label: 'Faster time-to-hire for enterprise clients' },
+  { value: '-10%', label: 'In hiring mistakes' },
   { value: '5-10%', label: 'Effective Collaboration and Productivity' },
-  { value: '10%', label: 'Reduced Turnover' },
+  { value: '10%', label: 'Reducing Turnover' },
 ]
 
 const pillars = [

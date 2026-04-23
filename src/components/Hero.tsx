@@ -24,9 +24,6 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'rgba(13,8,0,0.12)' }} />
-
       {/* Content */}
       <motion.div
         style={{ opacity }}
