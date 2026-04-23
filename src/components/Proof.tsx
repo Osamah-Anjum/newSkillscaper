@@ -2,10 +2,10 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 const stats = [
-  { value: '94%', label: 'Predictive validity vs. traditional assessments' },
-  { value: '3×', label: 'Faster time-to-hire for enterprise clients' },
-  { value: '40+', label: 'Sector-specific scenario libraries' },
-  { value: '99%', label: 'Candidate completion rate' },
+  { value: '20%', label: 'Increased Productivity' },
+  { value: '21%', label: 'Faster time-to-hire for enterprise clients' },
+  { value: '5-10%', label: 'Effective Collaboration and Productivity' },
+  { value: '10%', label: 'Reduced Turnover' },
 ]
 
 const pillars = [
@@ -78,7 +78,7 @@ export default function Proof() {
                 className="rounded-xl p-6 border border-accent/10 bg-ink-soft"
               >
                 <span className="text-accent text-xl mb-3 block">{p.icon}</span>
-                <h4 className="font-display font-semibold text-pearl text-base mb-2">{p.title}</h4>
+                <h4 className="font-display font-medium text-pearl text-base mb-2">{p.title}</h4>
                 <p className="text-pearl/40 text-sm leading-relaxed">{p.body}</p>
               </motion.div>
             ))}

@@ -39,7 +39,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.3 }}
-            className="font-display font-bold leading-[1.06] tracking-tight mb-6 md:mb-8 break-words text-pearl"
+            className="font-display font-bold leading-[1.06] tracking-wide mb-6 md:mb-8 break-words text-pearl"
             style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}
           >
             REDUCE HIRING RISK <span className="text-accent">BEFORE</span> YOUR NEW HIRE EVEN STARTS.

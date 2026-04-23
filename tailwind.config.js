@@ -5,7 +5,14 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Bebas Neue', 'sans-serif'],
+        display: ['Oswald', 'sans-serif'],
+      },
+      letterSpacing: {
+        tight: '0.02em',
+        normal: '0.03em',
+        wide: '0.06em',
+        wider: '0.1em',
+        widest: '0.2em',
       },
       colors: {
         ink: '#0D0800',

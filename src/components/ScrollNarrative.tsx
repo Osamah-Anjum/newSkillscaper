@@ -34,13 +34,6 @@ function Step({ step, index }: { step: typeof steps[0]; index: number }) {
       transition={{ duration: 0.6, delay: index * 0.15 }}
       className="group flex flex-col"
     >
-      {/* Phase number + top border
-      <div className="border-t border-accent/20 group-hover:border-accent transition-colors duration-300 pt-6 mb-6">
-        <span className="text-xs font-mono text-accent/40 group-hover:text-accent transition-colors duration-300">
-          {step.phase}
-        </span>
-      </div> */}
-
       {/* Label */}
       <span className="text-xs font-medium tracking-widest uppercase text-accent/50 mb-4">
         {step.label}
@@ -64,7 +57,7 @@ export default function ScrollNarrative() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="how-it-works" className="py-24 md:py-32 section-divider bg-ink">
+    <section id="how-it-works" className="py-24 md:py-32 section-divider bg-[#010000]">
       <div className="px-8 sm:px-12 lg:px-20 xl:px-28">
 
         {/* Header */}
