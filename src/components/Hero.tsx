@@ -39,7 +39,7 @@ export default function Hero() {
             className="font-display font-bold leading-[1.06] tracking-wide mb-6 md:mb-8 break-words text-pearl"
             style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}
           >
-            REDUCE HIRING RISK <span className="text-accent">BEFORE</span> YOUR NEW HIRE EVEN STARTS.
+            REDUCE<br></br> HIRING <span className="text-pearl/50">RISK</span><br></br> <span className="text-accent font-thin">BEFORE</span> YOUR NEW <span className="text-pearl/50">HIRE</span> EVEN<br></br> <span className="text-accent font-thin">STARTS.</span>
           </motion.h1>
 
           {/* Divider */}
@@ -52,7 +52,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.45 }}
             className="text-pearl/65 text-sm sm:text-base md:text-lg mb-8 md:mb-10 leading-relaxed max-w-lg"
           >
-            Skillscaper helps organisations assess and develop the capabilities that matter most in their real environment. Through immersive, context-based assessments and training experiences, we reveal not just what people know, but how effectively they are likely to perform,{' '}
+            Skillscaper helps organisations assess and develop the capabilities that matter most in their real environment. Through immersive, context-based assessments and training experiences, we reveal not just what people know, but how effectively they are likely to perform,<br></br>{' '}
             <span className="text-accent font-medium">before day one, and beyond.</span>
           </motion.p>
 
@@ -65,15 +65,9 @@ export default function Hero() {
           >
             <a
               href="#"
-              className="bg-accent hover:bg-accent-light text-ink font-semibold px-8 py-3.5 rounded-full transition-colors duration-200 text-sm text-center"
+              className="bg-accent text-ink font-semibold px-8 py-3.5 rounded-full transition-colors duration-200 text-sm text-center hover:shadow-lg hover:shadow-accent/20"
             >
               Request a Demo →
-            </a>
-            <a
-              href="#how-it-works"
-              className="text-pearl/55 hover:text-accent text-sm flex items-center justify-center sm:justify-start gap-2 transition-colors duration-200 py-3.5 sm:py-0"
-            >
-              See how it works
             </a>
           </motion.div>
 

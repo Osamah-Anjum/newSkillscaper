@@ -1,68 +1,102 @@
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, type Variants } from 'framer-motion'
 import dashboard from '../assets/Cinematic Dashboard.png'
 
 const bullets = [
   'Realistic Situations',
-  'Cross-Data Anlytics',
+  'Cross-Data Analytics',
   'Objective Results',
   'Actionable Decisions',
 ]
 
-export default function Analytics() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+const container: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } },
+}
 
+const item: Variants = {
+  hidden: { opacity: 0, x: -16, filter: 'blur(4px)' },
+  show: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.45, ease: 'easeOut' } },
+}
+
+export default function Analytics() {
   return (
     <section className="section-divider bg-[#000001] overflow-hidden">
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.6 }}
-        className="relative flex flex-col justify-center min-h-[500px] lg:min-h-[550px] md:min-h-[480px] overflow-hidden"
+      <div
+        className="relative flex flex-col justify-center min-h-[500px] lg:min-h-[550px] overflow-hidden"
         style={{
           backgroundImage: `url(${dashboard})`,
           backgroundSize: '70% auto',
-          backgroundPosition: 'right bottom',
-          backgroundPositionY: 'top 6rem',
+          backgroundPosition: 'right top 4rem',
           backgroundRepeat: 'no-repeat',
         }}
       >
-        {/* Dark overlay — heavier on left for text, lighter on right for image
-        <div className="absolute inset-0" style={{ background: 'rgba(13,8,0,0.1)' }} />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(13,8,0,0.88) 0%, rgba(13,8,0,0.85) 20%, rgba(13,8,0,0.1) 55%, rgba(13,8,0,0.0) 100%)' }} /> */}
+        {/* Gradient overlay for mobile readability */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'linear-gradient(to right, rgba(0,0,1,0.96) 0%, rgba(0,0,1,0.45) 15%, rgba(0,0,1,0.4) 45%, rgba(0,0,1,0.0) 100%)' }}
+        />
+        {/* Mobile: heavier bottom overlay so image doesn't clash */}
+        <div
+          className="absolute inset-0 pointer-events-none md:hidden"
+          style={{ background: 'rgba(0,0,1,0.55)' }}
+        />
 
-        {/* Content */}
-        <div className="relative z-10 px-8 sm:px-12 lg:px-20 xl:px-28 py-16 lg:py-24 max-w-xl">
-          <p className="text-xs tracking-widest uppercase text-accent/60 mb-5">WHAT YOU GET</p>
+        <div className="relative z-10 px-6 sm:px-12 lg:px-20 xl:px-28 py-16 lg:py-24 max-w-xl">
 
-          <h2 className="font-display font-bold text-pearl leading-tight mb-5">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="text-xs tracking-widest uppercase text-accent/60 mb-5"
+          >
+            WHAT YOU GET
+          </motion.p>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6, delay: 0.05, ease: 'easeOut' }}
+            className="font-display font-bold text-pearl leading-tight mb-5"
+          >
             A GLIMPSE INSIDE SKILLSCAPER
-          </h2>
+          </motion.h2>
 
-          <div className="w-12 h-px bg-accent mb-6" />
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15, ease: 'easeOut' }}
+            className="w-12 h-px bg-accent mb-6 origin-left"
+          />
 
-          <p className="text-pearl/60 leading-relaxed mb-8">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
+            className="text-pearl/60 leading-relaxed mb-8"
+          >
             The platform our clients rely on to see clearly, decide confidently, and unlock human potential.
-          </p>
+          </motion.p>
 
-          <ul className="flex flex-col gap-3">
+          <motion.ul
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-60px' }}
+            className="flex flex-col gap-3"
+          >
             {bullets.map((b, i) => (
-              <motion.li
-                key={i}
-                initial={{ opacity: 0, x: -12 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
-                className="flex items-center gap-3 text-sm text-pearl/70"
-              >
+              <motion.li key={i} variants={item} className="flex items-center gap-3 text-sm text-pearl/70">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
                 {b}
               </motion.li>
             ))}
-          </ul>
+          </motion.ul>
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }

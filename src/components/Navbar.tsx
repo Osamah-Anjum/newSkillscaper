@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { NavLink, useNavigate } from 'react-router-dom'
 import logo from '../assets/Logo_Horizontal-Transparent-Yellow.png'
 
-const links = ['How It Works', 'Sectors', 'Methodology', 'Results']
+const links = [
+  { label: 'Home', to: '/' },
+  { label: 'Applications', to: '/applications' },
+  { label: 'Methodology', to: '/methodology' },
+  { label: 'About Us', to: '/about' },
+]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -25,6 +32,16 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
+    `text-xs tracking-widest uppercase transition-colors duration-200 whitespace-nowrap ${
+      isActive ? 'text-accent' : 'text-pearl/35 hover:text-pearl'
+    }`
+
+  const mobileLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `flex items-center py-3.5 text-sm tracking-widest uppercase transition-colors border-b border-pearl/5 ${
+      isActive ? 'text-accent' : 'text-pearl/40 hover:text-pearl'
+    }`
+
   return (
     <>
       <motion.nav
@@ -32,36 +49,37 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.25, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? 'border-b border-accent/10' : ''
+          scrolled ? 'border-b border-pearl/5' : ''
         }`}
         style={scrolled ? { background: 'rgba(13,8,0,0.95)', backdropFilter: 'blur(12px)' } : {}}
       >
         <div className="px-5 sm:px-8 lg:px-20 xl:px-28 h-16 flex items-center justify-between">
 
-          <div className="flex items-center shrink-0">
+          <div className="flex items-center shrink-0 cursor-pointer" onClick={() => navigate('/')}>
             <img src={logo} alt="Skillscaper" className="h-10 sm:h-12 w-auto object-contain" />
           </div>
 
-          <ul className="hidden md:flex items-center gap-6 lg:gap-8">
+          <ul className="hidden md:flex items-center gap-8">
             {links.map(l => (
-              <li key={l}>
-                <a href="#" className="text-sm text-pearl/50 hover:text-accent transition-colors duration-200 whitespace-nowrap">{l}</a>
+              <li key={l.to}>
+                <NavLink to={l.to} end={l.to === '/'} className={linkClass}>
+                  {l.label}
+                </NavLink>
               </li>
             ))}
           </ul>
 
-          <div className="hidden md:flex items-center gap-3 shrink-0">
-            <a href="#" className="text-sm text-pearl/50 hover:text-accent transition-colors whitespace-nowrap">Sign in</a>
+          <div className="hidden md:flex items-center gap-4 shrink-0">
             <a
               href="#"
-              className="text-sm font-semibold px-5 py-2 rounded-full bg-accent hover:bg-accent-light text-ink transition-colors duration-200 whitespace-nowrap"
+              className="text-xs px-5 py-2 rounded-full bg-accent font-semibold text-ink transition-all duration-200 whitespace-nowrap hover:shadow-lg hover:shadow-accent/20"
             >
               Request Demo
             </a>
           </div>
 
           <button
-            className="md:hidden flex items-center justify-center w-11 h-11 -mr-2 text-pearl/70 hover:text-accent transition-colors"
+            className="md:hidden flex items-center justify-center w-11 h-11 -mr-2 text-pearl/50 hover:text-pearl transition-colors"
             onClick={() => setMenuOpen(v => !v)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
@@ -92,29 +110,30 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="fixed top-16 left-0 right-0 z-50 md:hidden border-t border-accent/10 px-5 pb-8"
+              className="fixed top-16 left-0 right-0 z-50 md:hidden border-t border-pearl/5 px-5 pb-8"
               style={{ background: 'rgba(13,8,0,0.98)', backdropFilter: 'blur(16px)' }}
             >
               <ul className="flex flex-col pt-4">
                 {links.map(l => (
-                  <li key={l}>
-                    <a
-                      href="#"
-                      className="flex items-center py-3.5 text-base text-pearl/60 hover:text-accent transition-colors border-b border-accent/5"
+                  <li key={l.to}>
+                    <NavLink
+                      to={l.to}
+                      end={l.to === '/'}
+                      className={mobileLinkClass}
                       onClick={() => setMenuOpen(false)}
                     >
-                      {l}
-                    </a>
+                      {l.label}
+                    </NavLink>
                   </li>
                 ))}
               </ul>
               <div className="flex flex-col gap-3 mt-6">
-                <a href="#" className="text-center py-3 text-sm text-pearl/50 hover:text-accent transition-colors" onClick={() => setMenuOpen(false)}>
+                <a href="#" className="text-center py-3 text-xs text-pearl/35 hover:text-pearl transition-colors" onClick={() => setMenuOpen(false)}>
                   Sign in
                 </a>
                 <a
                   href="#"
-                  className="block text-center font-semibold text-sm px-4 py-3.5 rounded-full bg-accent hover:bg-accent-light text-ink transition-colors duration-200"
+                  className="block text-center text-xs px-4 py-3.5 rounded-full bg-accent text-ink transition-colors duration-200"
                   onClick={() => setMenuOpen(false)}
                 >
                   Request Demo
