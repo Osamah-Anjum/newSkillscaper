@@ -1,16 +1,6 @@
-import { motion, type Variants } from 'framer-motion'
-import { useState, type FormEvent } from 'react'
+import { motion } from 'framer-motion'
+import { useState } from 'react'
 import Footer from '../components/Footer'
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 32, filter: 'blur(4px)' },
-  show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.65, ease: 'easeOut' } },
-}
-
-const container: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
-}
 
 export default function GetInTouch() {
   const [formData, setFormData] = useState({
@@ -43,7 +33,7 @@ export default function GetInTouch() {
     return newErrors
   }
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const newErrors = validateForm()
 
