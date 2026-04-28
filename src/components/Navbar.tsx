@@ -51,7 +51,7 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled ? 'border-b border-pearl/5' : ''
         }`}
-        style={scrolled ? { background: 'rgba(13,8,0,0.95)', backdropFilter: 'blur(12px)' } : {}}
+        style={scrolled ? { background: 'rgba(13,8,0,0.7)', backdropFilter: 'blur(12px)' } : {}}
       >
         <div className="px-5 sm:px-8 lg:px-20 xl:px-28 h-16 flex items-center justify-between">
 
@@ -71,10 +71,10 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-4 shrink-0">
             <a
-              href="#"
+              href="/get-in-touch"
               className="text-xs px-5 py-2 rounded-full bg-accent font-semibold text-ink transition-all duration-200 whitespace-nowrap hover:shadow-lg hover:shadow-accent/20"
             >
-              Request Demo
+              Request a Demo →
             </a>
           </div>
 
@@ -128,8 +128,8 @@ export default function Navbar() {
                 ))}
               </ul>
               <div className="flex flex-col gap-3 mt-6">
-                <a href="#" className="text-center py-3 text-xs text-pearl/35 hover:text-pearl transition-colors" onClick={() => setMenuOpen(false)}>
-                  Sign in
+                <a href="/get-in-touch" className="text-center py-3 text-xs text-pearl/35 hover:text-pearl transition-colors" onClick={() => setMenuOpen(false)}>
+                  Get In Touch
                 </a>
                 <a
                   href="#"

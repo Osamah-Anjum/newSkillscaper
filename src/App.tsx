@@ -10,6 +10,7 @@ import CTA from './components/CTA'
 import Footer from './components/Footer'
 import SectionTransition from './components/SectionTransition'
 import Applications from './pages/Applications'
+import GetInTouch from './pages/GetInTouch'
 
 function Home() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/applications" element={<Applications />} />
+        <Route path="/get-in-touch" element={<GetInTouch />} />
       </Routes>
     </div>
   )

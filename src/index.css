@@ -22,7 +22,7 @@
   h1 {
     font-family: 'Sora', sans-serif;
     font-size: clamp(2.2rem, 5.5vw, 4.5rem);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
     line-height: 1.05;
     font-weight: 600;
   }
@@ -61,7 +61,7 @@
 
 @layer utilities {
   .section-divider {
-    border-top: 1px solid rgba(201,168,76,0.06);
+    border-top: 1px solid #FFA400;
   }
 }
 

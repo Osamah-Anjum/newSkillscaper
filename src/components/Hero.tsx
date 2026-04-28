@@ -10,7 +10,7 @@ export default function Hero() {
   const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '10%'])
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden bg-ink">
+    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden bg-[#0a0a0a]">
 
       {/* Full background image with parallax */}
       <motion.div
@@ -64,7 +64,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4"
           >
             <a
-              href="#"
+              href="/get-in-touch"
               className="bg-accent text-ink font-semibold px-8 py-3.5 rounded-full transition-colors duration-200 text-sm text-center hover:shadow-lg hover:shadow-accent/20"
             >
               Request a Demo →

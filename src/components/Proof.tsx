@@ -24,11 +24,6 @@ const fadeUp: Variants = {
   show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.55, ease: 'easeOut' } },
 }
 
-const statBorder = (i: number) => ({
-  borderRight: i % 2 === 0 ? '1px solid rgba(255,164,0,0.08)' : 'none',
-  borderBottom: i < 2 ? '1px solid rgba(255,164,0,0.08)' : 'none',
-})
-
 export default function Proof() {
   return (
     <section className="py-24 md:py-32 section-divider bg-[#000001]">
@@ -51,16 +46,15 @@ export default function Proof() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-2 lg:grid-cols-4 rounded-2xl overflow-hidden mb-20 md:mb-28 border border-accent/30"
+          className="grid grid-cols-2 lg:grid-cols-4 rounded-2xl overflow-hidden mb-20 md:mb-28 border border-accent/20"
         >
           {stats.map((s, i) => (
             <motion.div
               key={i}
               variants={fadeUp}
-              className="p-6 md:p-8 text-center bg-[#000001] active:bg-ink-muted transition-colors"
-              style={statBorder(i)}
+              className="p-6 md:p-8 text-center bg-[#000001] border-r border-b border-accent/15 last:border-r-0 lg:last:border-r-0 [&:nth-child(2)]:border-r-0 [&:nth-child(3)]:border-b-0 [&:nth-child(4)]:border-b-0 lg:[&:nth-child(2)]:border-r lg:[&:nth-child(3)]:border-b lg:[&:nth-child(4)]:border-b"
             >
-              <div className="font-display font-bold text-4xl md:text-5xl mb-2 text-accent">{s.value}</div>
+              <div className="font-display text-4xl md:text-5xl mb-2 text-accent">{s.value}</div>
               <p className="text-pearl/40 text-sm leading-snug">{s.label}</p>
             </motion.div>
           ))}
@@ -102,7 +96,7 @@ export default function Proof() {
                 key={i}
                 variants={fadeUp}
                 whileHover={{ y: -4, borderColor: 'rgba(255,164,0,0.3)' }}
-                className="rounded-xl p-6 border border-accent/10 bg-ink-soft transition-colors duration-300 active:bg-ink-muted"
+                className="rounded-xl p-6 border border-accent/10 bg-[#000001] transition-colors duration-300 active:bg-ink-muted"
               >
                 <span className="text-accent text-xl mb-3 block">{p.icon}</span>
                 <h4 className="font-display font-medium text-pearl text-base mb-2">{p.title}</h4>
